@@ -1,8 +1,10 @@
 import express from "express";
 import { Request, Response, NextFunction } from "express";
+import router from "./Routes/tasksRouter";
  
 const app = express();
 app.use(express.json())
+app.use("/task", router)
 
 //rota por parametro: 
 app.get("/parametro/:nome", (req:Request, res:Response, next:NextFunction)=>{
