@@ -12,11 +12,11 @@ async function disponivel(req:Request, res:Response, next:NextFunction) {
     const dados = {dataInicio, dataFim, quantidade}
 
     try {
-        let quartos = await quartosRepository.disponivel(dados)
+        let quartos = await quartosRepository.disponiveis(dados)
         if(!quartos){throw new Error("Error ao buscar os quartos")}
 
         for(let q of quartos){
-            const fotos = await quartosRepository.buscarFotosQuartoId(q.id);
+            const fotos = await quartosRepository.buscarFotoPorQuartoId(q.id);
             q.fotos = fotos
         }
         res.status(200).json(quartos);

@@ -1,13 +1,15 @@
 import { Router } from "express";
 import rotaLogin from "./loginRouter";
 import quartosRouters from "./quartosRouter"
+import rotaQuartos from "./quartosRouter";
 
 const handlerRouter = Router();
 
 // rotas publicas
 
 handlerRouter.use("/api/login", rotaLogin);
-handlerRouter.use("/api/login", rotaLogin);
+handlerRouter.use("/api/consulta", rotaQuartos);
+handlerRouter.use("/api/", );
 
 // handlerRouter.use("/jwt", (req, res)=>{
 //     const payload = {

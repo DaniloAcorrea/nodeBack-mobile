@@ -1,7 +1,7 @@
 import { Router } from "express";
-import quartosController from "../model/quartosController";
+import quartosController from "../controller/quartosController";
 
-const rotaQuartos =Router();
+const rotaQuartos = Router();
 
 rotaQuartos.post("/", quartosController.disponivel)
 
