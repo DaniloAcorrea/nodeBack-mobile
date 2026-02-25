@@ -18,7 +18,7 @@ async function fazerPedido(data:any){
 }
 
 async function fazerReserva(idPedido:number, quarto:any) {
-    const sql = `INSERT INTO reservas(id_pedido_fk, id_quarto_fk, data_inicio, data_fim) VALUES (?, ?, ?, ?)`
+    const sql = `INSERT INTO reservas(id_pedido_fk, id_quarto_fk, dataInicio, dataFim) VALUES (?, ?, ?, ?)`
 
     try {
         const [result] = await pool.query<ResultSetHeader>(sql, [

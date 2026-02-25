@@ -20,9 +20,9 @@ async function disponiveis(pedido:QuartoReserva):Promise<Quartos[]|null>{
 }
 
 async function buscarFotoPorQuartoId(id:number) {
-    const sql = `SELECT i.caminho FROM quartos_fotos QF
-        JOIN imagens i ON QF.foto_id = i.id
-        WHERE QF.quarto_id = ?`;
+    const sql = `SELECT i.caminho FROM quarto_imagem QF
+        JOIN imagens i ON QF.id_imagem_fk = i.id
+        WHERE QF.id_quarto_fk = ?`;
 
     const [fotos] = await pool.query<RowDataPacket[]>(sql, [id])
     return fotos.map(foto=>(foto.nome))

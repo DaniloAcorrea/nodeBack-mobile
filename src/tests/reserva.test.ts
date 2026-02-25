@@ -5,7 +5,7 @@ test("POST: /api/reserva = 200", async()=>{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            email: "uira@email.com",
+            email: "teste@email.com",
             senha: "senha123"}
         )
     });
