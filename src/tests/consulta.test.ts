@@ -1,3 +1,5 @@
+
+
 test("POST: /api/quartosDisponiveis = 200", async()=>{
     const resp = await fetch("http://localhost:3000/api/quartosDisponiveis",{
         method: "POST",
@@ -5,7 +7,7 @@ test("POST: /api/quartosDisponiveis = 200", async()=>{
         body: JSON.stringify({
             dataInicio:"11/02/2026",
             dataFim:"12/02/2026",
-            quantidade:1
+            quantidade:3
         })
     });
     expect(resp.status).toBe(200);

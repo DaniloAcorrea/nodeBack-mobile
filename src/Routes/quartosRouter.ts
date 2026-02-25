@@ -1,8 +1,8 @@
 import { Router } from "express";
-import quartosController from "../controller/quartosController";
+import quartosController from "../controllers/quartosController"
 
 const rotaQuartos = Router();
 
-rotaQuartos.post("/", quartosController.disponivel)
+rotaQuartos.post("/", quartosController.disponiveis)
 
 export default rotaQuartos;

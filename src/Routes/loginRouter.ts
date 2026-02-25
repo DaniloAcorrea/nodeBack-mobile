@@ -1,16 +1,9 @@
 import { Router } from "express";
-import loginController from "../controller/loginController";
-
+import loginController from "../controllers/loginController"
 
 const rotaLogin = Router();
 
-// router.get("/", taskController.getTasks);
-// router.get("/:id", taskController.getTask);
-// router.post("/", taskController.createTask);
-// router.put("/:id", taskController.atualizarTask);
-// router.delete("/:id", taskController.deletarTask);
-
-rotaLogin.post("/", loginController.login);
-rotaLogin.post("/Cadastro", loginController.cadastroCliente);
+rotaLogin.post("/", loginController.loginCliente)
+rotaLogin.post("/cadastro", loginController.cadastroCliente)
 
 export default rotaLogin;

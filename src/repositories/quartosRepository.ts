@@ -1,8 +1,8 @@
-import { pool } from "../database/database";
+import {pool} from "../database/database"
 import { RowDataPacket } from "mysql2";
-import { QuartoReserva, Quarto } from "../model/quartos";
- 
-async function disponiveis(pedido: QuartoReserva): Promise<Quarto | null> {
+import { QuartoReserva, Quartos } from "../models/quarto";
+
+async function disponiveis(pedido:QuartoReserva):Promise<Quartos[]|null>{
     const sql = `SELECT * FROM quartos q WHERE q.disponivel = true
             AND ((q.camaCasal * 2) + q.camaSolteiro) >= ?
             AND q.id NOT IN (
@@ -10,24 +10,24 @@ async function disponiveis(pedido: QuartoReserva): Promise<Quarto | null> {
                 FROM reservas r
                 WHERE (r.dataFim >= ? AND r.dataInicio <= ?)
             )`;
- 
-    const [quartos] = await pool.query<Quarto[]>(sql, [
+
+    const [quartos] = await pool.query<Quartos[]>(sql, [
         pedido.quantidade,
         pedido.dataInicio,
         pedido.dataFim,
     ])
     return quartos.length ? quartos : null
 }
- 
-async function buscarFotoPorQuartoId(id: number) {
-    const sql = `SELECT i.caminho FROM quartos QF
-        JOIN imagens i ON QF.d_imagem_fk = i.id WHERE
-         QF.id = ?`;
- 
+
+async function buscarFotoPorQuartoId(id:number) {
+    const sql = `SELECT i.caminho FROM quartos_fotos QF
+        JOIN imagens i ON QF.foto_id = i.id
+        WHERE QF.quarto_id = ?`;
+
     const [fotos] = await pool.query<RowDataPacket[]>(sql, [id])
-    return fotos.map(foto => (foto.caminho))
+    return fotos.map(foto=>(foto.nome))
 }
- 
-export default {
+
+export default{
     disponiveis, buscarFotoPorQuartoId
 }
