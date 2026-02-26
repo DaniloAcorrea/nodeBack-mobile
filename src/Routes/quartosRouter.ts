@@ -6,3 +6,4 @@ const rotaQuartos = Router();
 rotaQuartos.post("/", quartosController.disponiveis)
 
 export default rotaQuartos;
+
