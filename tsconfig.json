@@ -1,4 +1,3 @@
-
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
@@ -9,7 +8,6 @@
     // Environment Settings
     "target": "es2020",
     "module": "commonjs",
-    "moduleResolution": "node",
 
     "esModuleInterop": true,
     "strict": true,
